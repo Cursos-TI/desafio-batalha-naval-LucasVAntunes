@@ -23,31 +23,6 @@ int main() {
     int cruz [3][5];
     int octaedro [3][5];
 
-    //Habilidades
-
-    //Cone
-
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 5; j++)
-        {
-            cone [i][j] = 0;
-            if ((i == 2) || (i == 0 && j == 2) || (i == 1 && (j > 0 && j < 4))){
-                cone [i][j] += 1;
-            }
-        }}
-        
-        /*                       DEMONSTRAÇÃO CONE
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 5; j++)
-            {
-                printf ("%d", cone [i][j]);
-        }
-        printf("\n");
-        }
-        printf("\n");*/
-
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
     //Loop para posicionar os navios
 
@@ -61,6 +36,65 @@ int main() {
         tabuleiro [8 - i][1 + i] = naviodiagonal1 [i];
         tabuleiro [i + 1][7 + i] = naviodiagonal2 [i];
     }
+    
+    //Habilidades
+
+    //Cone
+    
+    printf ("Habilidade em cone:\n\n");
+    
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            cone [i][j] = 0;
+            if ((i == 2) || (i == 0 && j == 2) || (i == 1 && (j > 0 && j < 4))){
+                cone [i][j] = 1;
+                tabuleiro [i+7][j+4] = 5;
+            }
+
+            printf ("%d ", cone [i][j]);
+        }printf ("\n");
+    }
+    printf ("\n\n");
+
+    //Cruz
+    
+    printf ("Habilidade em cruz:\n\n");
+    
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {   
+            cruz [i][j] = 0;
+            if ((i == 1) || (i == 0 && j == 2) || (i == 2 && j == 2)){
+                cruz [i][j] = 1;
+                tabuleiro [i+3][j+2] = 5;
+            }
+            
+            printf ("%d ", cruz [i][j]);
+        }printf ("\n");
+    }
+    printf ("\n\n");
+
+    //Octaedro
+
+    printf ("Habilidade em octaedro:\n\n");
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {   
+            octaedro [i][j] = 0;
+            if ((i == 0 && j == 2) || (i == 1 && (j > 0 && j < 4)) || (i == 2 && j == 2)){
+                octaedro [i][j] = 1;
+                tabuleiro [i][j - 1] = 5;
+            }
+            
+            printf ("%d ", octaedro [i][j]);
+        }printf ("\n");
+    }
+    printf ("\n\n");
 
     // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
 
