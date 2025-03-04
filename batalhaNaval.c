@@ -13,22 +13,29 @@ int main() {
     int tabuleiro [10][10] = {0};
     int naviohorizontal [3] = {3,3,3};
     int naviovertical [3] = {3,3,3};
+    int naviodiagonal1 [3] = {3,3,3};
+    int naviodiagonal2 [3] = {3,3,3};
    
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
-   
     //Loop para posicionar os navios
 
     for (int i = 0; i < 3; i++){
     
         tabuleiro [2][i + 3] = naviohorizontal [i];
         tabuleiro [i + 6][8] = naviovertical [i];    
+    
+    //Navios diagonais
+        
+        tabuleiro [8 - i][1 + i] = naviodiagonal1 [i];
+        tabuleiro [i + 1][7 + i] = naviodiagonal2 [i];
+
     }
+    
+    
 
     // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
-    
-    //Exibição do tabuleiro com suas coordenadas
 
-    printf("   A B C E D F G H I J\n"); // Coordenadas (colunas)
+    printf("    A B C E D F G H I J\n"); // Coordenadas (colunas)
     
     for (int linha = 0; linha < 10; linha++)
     {
@@ -36,7 +43,7 @@ int main() {
             printf (" ");
             }
 
-            printf ("%d ", linha + 1); // Coordenadas (linhas)
+            printf ("%d| ", linha + 1); // Coordenadas (linhas)
 
             for (int coluna = 0; coluna < 10; coluna++) {
                 printf("%d ", tabuleiro[linha][coluna]);
